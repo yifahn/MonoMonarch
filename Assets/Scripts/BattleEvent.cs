@@ -36,7 +36,7 @@ public class BattleEvent : MonoBehaviour
         if (CellState.opponentSpawnBool == true && CellState.playerSpawnBool == true)
         {
             int iIterator = 0;
-        int i = 1;
+        
         foreach (GameObject cell in plane.GetComponent<Map>().mapListL1) //prop up y pos of each grassland to match buildings y pos for the duration of the battle anim.
         {
             if (cell.transform.localPosition.y != 1.2f)
@@ -75,7 +75,7 @@ public class BattleEvent : MonoBehaviour
         }
 
         iIterator = 0;
-        i = 1;
+       
 
       
             Debug.Log(int.Parse(CellState.playerSpawn));
@@ -103,7 +103,7 @@ public class BattleEvent : MonoBehaviour
     public void ExitBattleEvent()
     {
         int iIterator = 0;
-        int i = 1;
+      
         foreach (GameObject cell in plane.GetComponent<Map>().mapListL1) //prop up y pos of each grassland to match buildings y pos for the duration of the battle anim.
         {
             if (cell.transform.localPosition.y == 1.2f)
@@ -138,7 +138,7 @@ public class BattleEvent : MonoBehaviour
             iIterator++;
         }
         iIterator = 0;
-        i = 1;
+        
     }
 
 }
