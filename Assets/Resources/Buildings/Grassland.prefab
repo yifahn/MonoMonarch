@@ -12,10 +12,7 @@ GameObject:
   - component: {fileID: 5038406372405975698}
   - component: {fileID: 3275699634189959017}
   - component: {fileID: 1950683591334541214}
-  - component: {fileID: 4925475966818216373}
-  - component: {fileID: 7453093430313007811}
-  - component: {fileID: 265557656836396844}
-  - component: {fileID: 6428218995909053935}
+  - component: {fileID: 6817457754177186268}
   m_Layer: 0
   m_Name: Grassland
   m_TagString: Untagged
@@ -96,12 +93,20 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4059053420914325262}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4925475966818216373
+--- !u!114 &6817457754177186268
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -110,46 +115,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 4059053420914325262}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 644520247bffdd04987cdac9013fac6b, type: 3}
+  m_Script: {fileID: 11500000, guid: 004cf36776450e440a08fd4941347032, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7453093430313007811
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4059053420914325262}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9dafb65fa9754fa4eb6fefb2cc52ef37, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  obj: {fileID: 0}
-  overwriteObj: {fileID: 0}
---- !u!122 &265557656836396844
-Halo:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4059053420914325262}
-  m_Enabled: 0
-  m_Color:
-    serializedVersion: 2
-    rgba: 436207615
-  m_Size: 1.5
---- !u!114 &6428218995909053935
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4059053420914325262}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d135441b4ccce149b6ba0f3d914c5a6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  plane: {fileID: 0}
-  overwriteToggle: {fileID: 0}

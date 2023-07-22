@@ -1099,6 +1099,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 261009554}
   m_CullTransparentMesh: 0
+--- !u!1 &317721507
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 317721509}
+  - component: {fileID: 317721508}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &317721508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 317721507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37a29aa858fc7564f9ffad67278ad63f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &317721509
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 317721507}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 506.78723, y: 339.1695, z: -763.57153}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &338349576
 GameObject:
   m_ObjectHideFlags: 0
@@ -1292,7 +1336,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Remove
+  m_text: Bulldoze
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1319,7 +1363,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 22.6
+  m_fontSize: 22.2
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2837,13 +2881,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 926547fec72eff447a35bf16eec98933, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnPlayer: {fileID: 5805511282539016515, guid: 1c604e2326b189349aeda70459115497,
-    type: 3}
-  spawnOpponent: {fileID: 3745852630357715935, guid: 5b0e6f79ffc2340468e05af744279fe7,
-    type: 3}
-  hasPlayerSpawn: 0
-  hasOpponentSpawn: 0
-  plane: {fileID: 0}
 --- !u!114 &700995073
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2851,7 +2888,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 700995069}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5d06633add559d54886fb143c39ca7eb, type: 3}
   m_Name: 
@@ -2870,7 +2907,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 700995069}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8a19f27beb70a894c967dce5699c6b13, type: 3}
   m_Name: 
@@ -3091,7 +3128,7 @@ GameObject:
   - component: {fileID: 763354876}
   - component: {fileID: 763354875}
   m_Layer: 5
-  m_Name: ExitBtn
+  m_Name: MainMenuBtn
   m_TagString: UIComponent
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3761,7 +3798,7 @@ GameObject:
   - component: {fileID: 935959343}
   - component: {fileID: 935959342}
   m_Layer: 5
-  m_Name: StatsBtn
+  m_Name: CharacterBtn
   m_TagString: UIComponent
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3831,19 +3868,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 935959343}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
-        m_MethodName: OnClickGoToStatsScene
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &935959343
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5356,7 +5381,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_IsOn: 1
+  m_IsOn: 0
 --- !u!1 &1293022880
 GameObject:
   m_ObjectHideFlags: 0
@@ -8078,7 +8103,7 @@ GameObject:
   - component: {fileID: 1739541344}
   - component: {fileID: 1739541343}
   m_Layer: 5
-  m_Name: RemoveBtn
+  m_Name: BulldozeBtn
   m_TagString: UIComponent
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8442,7 +8467,7 @@ GameObject:
   - component: {fileID: 1816910770}
   - component: {fileID: 1816910769}
   m_Layer: 5
-  m_Name: BackToCity
+  m_Name: MapBtn
   m_TagString: UIComponent
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

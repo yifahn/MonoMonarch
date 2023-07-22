@@ -12,10 +12,8 @@ GameObject:
   - component: {fileID: 1746837564747559767}
   - component: {fileID: 2868644872687564625}
   - component: {fileID: 8611873326978145285}
-  - component: {fileID: 1736186998225737158}
-  - component: {fileID: 3265735820903150395}
   - component: {fileID: 6081762516652854520}
-  - component: {fileID: -3874065444227202703}
+  - component: {fileID: -1587693559423196560}
   m_Layer: 0
   m_Name: Blockade
   m_TagString: Untagged
@@ -96,37 +94,19 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7125335434592091230}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1736186998225737158
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7125335434592091230}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 644520247bffdd04987cdac9013fac6b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &3265735820903150395
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7125335434592091230}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9dafb65fa9754fa4eb6fefb2cc52ef37, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  obj: {fileID: 0}
-  overwriteObj: {fileID: 0}
 --- !u!122 &6081762516652854520
 Halo:
   m_ObjectHideFlags: 0
@@ -139,7 +119,7 @@ Halo:
     serializedVersion: 2
     rgba: 436207615
   m_Size: 1.5
---- !u!114 &-3874065444227202703
+--- !u!114 &-1587693559423196560
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -148,8 +128,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 7125335434592091230}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d135441b4ccce149b6ba0f3d914c5a6, type: 3}
+  m_Script: {fileID: 11500000, guid: 004cf36776450e440a08fd4941347032, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  plane: {fileID: 0}
-  overwriteToggle: {fileID: 0}

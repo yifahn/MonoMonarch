@@ -971,6 +971,7 @@ public class Map : MonoBehaviour
 
                 }
             }
+
             Debug.Log(boundsObj1X + "," + boundsObjY1 + " Obj1 - " + boundsObj2X + "," + boundsObj2Y + " Obj2");
             //uninitialise bounds variables
             Debug.Log("Finished Multi Build/Remove");
@@ -1047,45 +1048,8 @@ public class Map : MonoBehaviour
         else { return null; }
 
     }
-    public void SetOpponentSpawn()
-    {
-        if (CellState.opponentSpawnBool == true)
-        {
-            gameKeeper.GetComponent<SetSpawn>().hasOpponentSpawn = false;
-            Debug.Log("opponentspawnbool is set to true so instantiate a opponentspawn at saved location");
-            Debug.Log(CellState.playerSpawn);
-            Debug.Log(CellState.opponentSpawn);
-            int tempInt = int.Parse(CellState.opponentSpawn);
-            gameKeeper.GetComponent<SetSpawn>().SetOpponentSpawn(mapListL1[tempInt]);
-            gameKeeper.GetComponent<SetSpawn>().hasOpponentSpawn = true;
-        }
-        else
-        {
-            Debug.Log("setting op spawn to default '.'");
-            gameKeeper.GetComponent<SetSpawn>().hasOpponentSpawn = false;
-            CellState.opponentSpawn = ".";
-        }
-    }
-    public void SetPlayerSpawn()
-    {
-        if (CellState.playerSpawnBool == true)
-        {
-            gameKeeper.GetComponent<SetSpawn>().hasPlayerSpawn = false;
-            Debug.Log("playerspawnbool is set to true so instantiate a opponentspawn at saved location");
-            Debug.Log(CellState.playerSpawn);
-            Debug.Log(CellState.opponentSpawn);
-            int tempInt = int.Parse(CellState.playerSpawn);
 
-            gameKeeper.GetComponent<SetSpawn>().SetPlayerSpawn(mapListL1[tempInt]);
-            gameKeeper.GetComponent<SetSpawn>().hasPlayerSpawn = true;
-        }
-        else
-        {
-            Debug.Log("setting player spawn to default ','");
-            gameKeeper.GetComponent<SetSpawn>().hasPlayerSpawn = false;
-            CellState.playerSpawn = ".";
-        }
-    }//ss
+
 
     /// <summary>
     /// edit map
@@ -1213,8 +1177,7 @@ public class Map : MonoBehaviour
     {
         mapListL1 = new List<GameObject>();
         mapListL2 = new List<string>();
-        gameKeeper.GetComponent<SetSpawn>().hasPlayerSpawn = false;
-        gameKeeper.GetComponent<SetSpawn>().hasOpponentSpawn = false;
+
         //NEW MAP GENERATIONss
         int weight = 2;
         for (int ii = 1; ii <= 33; ii++)

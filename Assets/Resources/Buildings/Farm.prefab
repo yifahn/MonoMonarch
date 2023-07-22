@@ -12,9 +12,7 @@ GameObject:
   - component: {fileID: 7117643127119556742}
   - component: {fileID: 4699576393780504704}
   - component: {fileID: 9160088785508712786}
-  - component: {fileID: 2537424207821076011}
-  - component: {fileID: 3835520847287983224}
-  - component: {fileID: 3953506649767167656}
+  - component: {fileID: -8503573165217305811}
   m_Layer: 0
   m_Name: Farm
   m_TagString: Untagged
@@ -95,12 +93,20 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1136923707458716001}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2537424207821076011
+--- !u!114 &-8503573165217305811
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -109,34 +115,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 1136923707458716001}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9dafb65fa9754fa4eb6fefb2cc52ef37, type: 3}
+  m_Script: {fileID: 11500000, guid: 004cf36776450e440a08fd4941347032, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obj: {fileID: 0}
-  overwriteObj: {fileID: 0}
---- !u!122 &3835520847287983224
-Halo:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1136923707458716001}
-  m_Enabled: 0
-  m_Color:
-    serializedVersion: 2
-    rgba: 436207615
-  m_Size: 1.5
---- !u!114 &3953506649767167656
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1136923707458716001}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d135441b4ccce149b6ba0f3d914c5a6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  plane: {fileID: 0}
-  overwriteToggle: {fileID: 0}
