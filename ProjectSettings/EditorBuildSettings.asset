@@ -9,10 +9,10 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 02d3e9ffb25103c4e99329b6af2b3a70
   - enabled: 1
-    path: Assets/Scenes/CityScaper.unity
+    path: Assets/Scenes/Kingdom.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
-    path: Assets/Scenes/PlayerSheet.unity
+    path: Assets/Scenes/Character.unity
     guid: f8bbbde6facb5d74dbd4397b482e985d
   - enabled: 1
     path: Assets/Scenes/SoupKitchen.unity
@@ -24,3 +24,4 @@ EditorBuildSettings:
     path: Assets/Scenes/Battleboard.unity
     guid: f57a20f3a53a02c4080317005e5638be
   m_configObjects: {}
+  m_UseUCBPForAssetBundles: 0

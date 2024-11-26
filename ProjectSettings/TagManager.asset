@@ -8,6 +8,8 @@ TagManager:
   - building
   - cell
   - UIComponent
+  - Scene
+  - Authentication
   layers:
   - Default
   - TransparentFX
