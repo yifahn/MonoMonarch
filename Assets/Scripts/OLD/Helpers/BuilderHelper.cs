@@ -196,6 +196,11 @@ namespace Helpers
             int altState = (int)AltState;
             return altState;
         }
+        public static int GetSelectedBuildingState()
+        {
+            int selectedBuildingState = (int)SelectedBuildingState;
+            return selectedBuildingState;
+        }
         public static int GetBuildState()
         {
             int buildState = (int)BuildState;
@@ -206,11 +211,7 @@ namespace Helpers
             int overwriteState = (int)OverwriteState;
             return overwriteState;
         }
-        public static int GetSelectedBuildingState()
-        {
-            int selectedBuildingState = (int)SelectedBuildingState;
-            return selectedBuildingState;
-        }
+
         public static void SetSelectedBuildState(int buildState)
         {
             BuildState = (BuildState)buildState;

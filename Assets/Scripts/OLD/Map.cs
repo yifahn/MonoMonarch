@@ -15,6 +15,7 @@ public class Map : MonoBehaviour
     public static int offSet = 3;
     public bool houseSelected, librarySelected, factorySelected, wonderSelected, cityCentreSelected, roadSelected, blockadeSelected, farmSelected, grasslandSelected, forestSelected, towerAASelected, towerMSelected;
     public GameObject house, library, factory, citycentre, wonder, road, blockade, forest, grassland, towerAA, towerM, farm;
+
     //public GameObject g_Grassland;
     public GameObject panelBuild, scoreObj;
     public List<GameObject> mapListL1;

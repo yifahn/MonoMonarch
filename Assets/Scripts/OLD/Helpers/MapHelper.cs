@@ -34,6 +34,7 @@ namespace Helpers
         private static int mapDimensions_Y;
         private static Color color;
         private static int[] altNodeArray;
+
         public static Dictionary<int, string> NodeMap { get { return nodeMap; } set { nodeMap = value; } }
         public static int MapDimensions_X { get { return mapDimensions_X; } set { mapDimensions_X = value; } }
         public static int MapDimensions_Y { get { return mapDimensions_Y; } set { mapDimensions_Y = value; } }

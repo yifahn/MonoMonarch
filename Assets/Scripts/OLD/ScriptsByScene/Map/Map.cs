@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Helpers;
+using Assets.Scripts.ClientManagers.Kingdom;
 
 namespace Managers//required due to other script called Map, remove this once all scripts updated
 {
@@ -150,7 +151,7 @@ namespace Managers//required due to other script called Map, remove this once al
                 }
                // Color colour = NodeMap[n_Id].GetComponent<Material>().color;
                 //Color highlight = new Color(Color.r, Color.g, Color.b, opacity);
-               // NodeMap[n_Id].GetComponent<Material>().SetColor("AdjustColor", highlight);
+                KingdomManager.Instance.NodeList[n_Id].GetComponent<Material>().SetColor("AdjustColor", highlight);
             }
         }
         /// <summary>

@@ -105,7 +105,7 @@ public class ClickListenerNode : MonoBehaviour, IInteractable
                     BuilderHelper.N_Id_2_Alt = n_Id;
                     //gameManager = GameObject.Find("GameManager");
                     gameManager.GetComponent<Game>().UpdateAltBuild_UIElements();
-                    BuilderHelper.AltPopulatedNodeArray = MapHelper.PopulateNodeArray(BuilderHelper.N_Id_1_Alt, BuilderHelper.N_Id_2_Alt);
+                    BuilderHelper.NodeIdAltArray = MapHelper.PopulateNodeArray(BuilderHelper.N_Id_1_Alt, BuilderHelper.N_Id_2_Alt);
                     mapManager.GetComponent<Managers.Map>().SetOpacitySelection(MapHelper.AltNodeArray, 0.75f); //toggle highlight on
                     return;//give player opportunity to confirm selection
 
@@ -117,7 +117,7 @@ public class ClickListenerNode : MonoBehaviour, IInteractable
                     break; //continue
             }
         }
-        else { BuilderHelper.AltPopulatedNodeArray = new int[1]; } //singular bulldoze 
+        else { BuilderHelper.NodeIdAltArray = new int[1]; } //singular bulldoze 
         mapManager.GetComponent<Managers.Map>().Action();
     }*/ //no longer required due to buildstate checks done on Map.cs / MapManager
 }

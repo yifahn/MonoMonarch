@@ -15,6 +15,7 @@ using MonoMonarchNetworkFramework.Authentication.RefreshToken;
 using Assets.Scripts.ClientManagers.Game;
 using System.Text.RegularExpressions;
 using UnityEditor.PackageManager;
+using Assets.Scripts.ClientManagers.Kingdom;
 
 namespace Assets.Scripts.ClientManagers.User
 {
@@ -121,7 +122,13 @@ namespace Assets.Scripts.ClientManagers.User
                     Debug.Log("LOGIN-RESPONSE SUCCESS");
                     UserLoginResponse = loginResponse;
                     if (await GameManager.Instance.LoadGameState())
+                    {
                         GameManager.Instance.NavToScene("BTN_LOGIN_SUBMIT_L");
+
+                       // KingdomManager.Instance.
+                    }
+                        
+
                     else GameManager.Instance.ClearGameCache();
                 }
                 else if (response is ErrorResponse errorResponse)

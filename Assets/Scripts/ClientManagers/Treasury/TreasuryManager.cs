@@ -22,6 +22,8 @@ using MonoMonarchGameFramework.Game.Treasury;
 using static System.Collections.Specialized.BitVector32;
 using System.IO;
 using System.Numerics;
+using System.Collections.Generic;
+using MonoMonarchGameFramework.Game.Kingdom.Nodes;
 
 namespace Assets.Scripts.ClientManagers.Treasury
 {
@@ -48,6 +50,7 @@ namespace Assets.Scripts.ClientManagers.Treasury
                 return _instance;
             }
         }
+
         private void Awake()
         {
             if (_instance != null && _instance != this)
@@ -61,6 +64,7 @@ namespace Assets.Scripts.ClientManagers.Treasury
             }
         }
         #endregion
+
 
         #region Treasury Properties
         public TreasuryLoadResponse TreasuryLoadResponse { get; set; }
@@ -76,8 +80,8 @@ namespace Assets.Scripts.ClientManagers.Treasury
             }
         }
         [SerializeField] private TreasuryState _treasuryState;
-
         #endregion
+
 
         public async Task<bool> TreasuryLoadAsync()
         {
@@ -112,12 +116,43 @@ namespace Assets.Scripts.ClientManagers.Treasury
             }
         }
 
-
         public void ClearTreasuryCache()
         {
             TreasuryLoadResponse = null;
             TreasuryState = null;
         }
+
+
+        #region Treasury Zoning
+        [SerializeField] private BigInteger zoningCost;
+        public BigInteger ZoningCost { get { return zoningCost; } set { zoningCost = value; } }
+        public void AddZoningCost(List<BaseNode> nodeList)
+        {
+            foreach (BaseNode node in nodeList)
+                ZoningCost += node.NodeCost;
+        }
+        public void SubtractZoningCost(List<BaseNode> nodeList)
+        {
+            foreach (BaseNode node in nodeList)
+                ZoningCost -= node.NodeCost;
+        }
+        public void ZoningTextColourRed(MeshRenderer mr)
+        {
+
+        }
+        #endregion
+
+
+        #region Treasury Tools
+        public bool IsSufficientCoin(List<BaseNode> nodeList)
+        {
+            BigInteger total = 0;
+            foreach (BaseNode node in nodeList)
+                total += node.NodeCost;
+
+            return true ? total < TreasuryState.GetTotalCoin() : false;
+        }
+        #endregion
 
 
     }
