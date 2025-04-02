@@ -106,14 +106,14 @@ public class ClickListenerNode : MonoBehaviour, IInteractable
                     //gameManager = GameObject.Find("GameManager");
                     gameManager.GetComponent<Game>().UpdateAltBuild_UIElements();
                     BuilderHelper.NodeIdAltArray = MapHelper.PopulateNodeArray(BuilderHelper.N_Id_1_Alt, BuilderHelper.N_Id_2_Alt);
-                    mapManager.GetComponent<Managers.Map>().SetOpacitySelection(MapHelper.AltNodeArray, 0.75f); //toggle highlight on
+                    mapManager.GetComponent<Managers.Map>().SetZonedOpacitySelection(MapHelper.AltNodeArray, 0.75f); //toggle highlight on
                     return;//give player opportunity to confirm selection
 
                 case 3://alt build
                     BuilderHelper.AltState = AltState.False; //reset 
                     //gameManager = GameObject.Find("GameManager");
                     gameManager.GetComponent<Game>().UpdateAltBuild_UIElements();
-                    mapManager.GetComponent<Managers.Map>().SetOpacitySelection(MapHelper.AltNodeArray, 1f); //toggle highlight off
+                    mapManager.GetComponent<Managers.Map>().SetZonedOpacitySelection(MapHelper.AltNodeArray, 1f); //toggle highlight off
                     break; //continue
             }
         }

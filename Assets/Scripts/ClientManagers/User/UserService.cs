@@ -30,7 +30,7 @@ namespace Assets.Scripts.ClientManagers.User
         {
 
             string url = $"{NetworkConstants.GetServerURLPrefix()}/authentication/register";  //http://localhost:5223/authentication/register
-            UnityWebRequest webRequest = new UnityWebRequest(url, "POST");
+            UnityWebRequest webRequest = new UnityWebRequest(url, "POST"); 
             webRequest.SetRequestHeader("Content-Type", "application/json");
 
             JsonSerializer serialiser = new JsonSerializer();
@@ -49,7 +49,10 @@ namespace Assets.Scripts.ClientManagers.User
             webRequest.uploadHandler = new UploadHandlerRaw(jsonBytes);
             webRequest.downloadHandler = new DownloadHandlerBuffer();
 
-            await webRequest.SendWebRequest();
+            webRequest.SendWebRequest();
+            while (!webRequest.isDone)
+            { await Task.Yield(); }
+
             IRegistrationResponse response = null;
             if (webRequest.result == UnityWebRequest.Result.Success)
             {
@@ -113,7 +116,10 @@ namespace Assets.Scripts.ClientManagers.User
             webRequest.uploadHandler = new UploadHandlerRaw(jsonBytes);
             webRequest.downloadHandler = new DownloadHandlerBuffer();
 
-            await webRequest.SendWebRequest();
+            webRequest.SendWebRequest();
+            while (!webRequest.isDone)
+            { await Task.Yield(); }
+
             ILoginResponse response = null;
             if (webRequest.result == UnityWebRequest.Result.Success)
             {
@@ -179,7 +185,11 @@ namespace Assets.Scripts.ClientManagers.User
             webRequest.uploadHandler = new UploadHandlerRaw(jsonBytes);
             webRequest.downloadHandler = new DownloadHandlerBuffer();
 
-            await webRequest.SendWebRequest(); //401 UNAUTHORIZED?????????????????????????????????????????????
+            //await webRequest.SendWebRequest(); //401 UNAUTHORIZED?????????????????????????????????????????????
+            webRequest.SendWebRequest();
+            while (!webRequest.isDone)
+            { await Task.Yield(); }
+
             ILogoutResponse response = null;
             if (webRequest.result == UnityWebRequest.Result.Success)
             {
@@ -249,7 +259,10 @@ namespace Assets.Scripts.ClientManagers.User
             webRequest.uploadHandler = new UploadHandlerRaw(jsonBytes);
             webRequest.downloadHandler = new DownloadHandlerBuffer();
 
-            await webRequest.SendWebRequest();
+            webRequest.SendWebRequest();
+            while (!webRequest.isDone)
+            { await Task.Yield(); }
+
             IRefreshTokenResponse response = null;
             if (webRequest.result == UnityWebRequest.Result.Success)
             {

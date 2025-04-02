@@ -244,7 +244,7 @@ namespace Assets.Scripts.ClientManagers.User
         {
             if (string.IsNullOrWhiteSpace(email))
             {
-                return false; // Invalid if null, empty, or whitespace.
+                return false; // false == null, empty, whitespace
             }
             return EmailRegex.IsMatch(email);
         }

@@ -17,6 +17,7 @@ namespace Assets.Scripts.ClientManagers.Game
     //SYSTEM.NET LIBRARY IS NOT SUPPORTED BY WEBGL DUE TO JAVA CONVERSION NOT SUPPORTING NETWORK SOCKETS... OR SOMETHING LIKE THAT - DONT USE SYSTEM.NET NAMESPACE!!!!!!!! - UnityWebRequest ONLY!!!!
     #region Interface Definitions
     //F2P WITH ADVERTISEMENTS OR MANNEQUIN SUBSCRIPTIONS (minimum 1 additional mannequin to remove ads)
+    // 5/3/25 - read somewhere games relying on ads as business model are banned from steam - go mannequin
     public interface IGameService
     {
         int ResolveScene(string sceneName);

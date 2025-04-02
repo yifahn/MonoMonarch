@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.IO;
 using System.Threading.Tasks;
 using System.Collections.Generic;
@@ -176,14 +176,19 @@ namespace Assets.Scripts.ClientManagers.Kingdom
                 int[] nodeIdArray = new int[ZonedMapList.Count];
                 for (int i = 0; i < ZonedMapList.Count; i++)
                     nodeIdArray[i] = ZonedMapList[i].NodeIndex;
+             
+                //change material of scene nodes to zonedmap node's material
+                DistinguishZoningNodes(nodeIdArray); 
+                //GET FLARE COLOUR //break game rules?
 
-                DistinguishZoningNodes(nodeIdArray);
+                //ADD FLARE //enable flares
+
             }
             else if (!enableZoningMode && IsZoningMode)
             {
                 IsZoningMode = false;
                 foreach (BaseNode node in ZonedMapList)
-                    NodeList[Map[node.NodeIndex].NodeType][node.NodeIndex].gameObject.GetComponent<MeshRenderer>().material.color = nodeColours.ElementAt(node.NodeType);
+                    NodeList[Map[node.NodeIndex].NodeType][node.NodeIndex].gameObject.GetComponent<MeshRenderer>().material.color = nodeColours.ElementAt(node.NodeType); //FLARE?
             }
         }
         public BaseNode GetSelectedBaseNodeZoning(int nodeIndex)
@@ -243,12 +248,22 @@ namespace Assets.Scripts.ClientManagers.Kingdom
 
         public void DistinguishZoningNodes(int[] nodeIdArray)
         {
+            //GET ZONEDMAP NODE MATERIAL VIA NODETYPE
             int[] nodeTypeArray = new int[nodeIdArray.Length];
             for (int i = 0; i < nodeIdArray.Length; i++)
                 nodeTypeArray[i] = ZonedMapList.ElementAt(nodeIdArray[i]).NodeType;
-
-            SetOpacitySelection(nodeIdArray, 0.75f);
+            //SET MATERIAL
+            SetZonedOpacitySelection(nodeIdArray, 0.75f);
             SetZonedColourSelection(nodeIdArray, nodeTypeArray);
+
+            //CHECK GAME RULES
+            foreach(int nodeId in nodeIdArray)
+            {
+                KingdomState.UpdateNumNodeTypes();
+            }
+
+            
+
             for (int i = 0; i < ZonedMapList.Count();i++)
             {
             //glow effect red or green
@@ -333,8 +348,8 @@ namespace Assets.Scripts.ClientManagers.Kingdom
 
             Color redOpaque = new Color(FlareMatRed.color.r, FlareMatRed.color.g, FlareMatRed.color.b, 0);
             Flare.GetComponent<MeshRenderer>().material.color = redOpaque;
+            //Flare.GetComponent<MeshRenderer>().material = FlareMatGreen;
 
-            Flare.GetComponent<MeshRenderer>().material = FlareMatGreen;
             for (int i = 0; i < 1980; i++)
             {
                 int[] result = KingdomState.CalculateNodePos(i);
@@ -342,9 +357,9 @@ namespace Assets.Scripts.ClientManagers.Kingdom
                 int flareY = result[1];
                 Flare.transform.position = new Vector3((float)flareX, (float)flareY, Flare.transform.position.z);
 
-                FlareDict.Add(i, Flare);
-            }
-                
+                FlareDict.Add(i, Flare); //now use flares by changing material with preset colour,
+                                         //flarematred or flarematgreen, after an intial check of if if game rules are not violated
+            }    
         }
 
 
@@ -460,7 +475,7 @@ namespace Assets.Scripts.ClientManagers.Kingdom
 
 
         #region Kingdom Map Tools
-        public void SetOpacitySelection(int[] nodeIdArray, float opacity)
+        public void SetZonedOpacitySelection(int[] nodeIdArray, float opacity)
         {
             Color colour = new Color(0f, 0f, 0f, 0f);
             foreach (int n_Id in nodeIdArray)

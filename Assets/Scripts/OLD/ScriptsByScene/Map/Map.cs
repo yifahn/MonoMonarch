@@ -151,7 +151,7 @@ namespace Managers//required due to other script called Map, remove this once al
                 }
                // Color colour = NodeMap[n_Id].GetComponent<Material>().color;
                 //Color highlight = new Color(Color.r, Color.g, Color.b, opacity);
-                KingdomManager.Instance.NodeList[n_Id].GetComponent<Material>().SetColor("AdjustColor", highlight);
+              //  KingdomManager.Instance.NodeList[n_Id].GetComponent<Material>().SetColor("AdjustColor", highlight);
             }
         }
         /// <summary>
@@ -244,7 +244,7 @@ namespace Managers//required due to other script called Map, remove this once al
                 int n_Id = BuilderHelper.AltPopulatedNodeArray[i];
                 switch (BuilderHelper.BuildState)
                 {
-                    case BuildState.Build:
+                    case Helpers.BuildState.Build:
                         if (!BuilderHelper.InvalidOverwrite(n_Id))
                         {
                             if (!BuilderHelper.InvalidBuild(n_Id))
@@ -253,7 +253,7 @@ namespace Managers//required due to other script called Map, remove this once al
                             }
                         }
                         break;
-                    case BuildState.Bulldoze:
+                    case Helpers.BuildState.Bulldoze:
                         ActionBulldoze(n_Id);
                         break;
                 }

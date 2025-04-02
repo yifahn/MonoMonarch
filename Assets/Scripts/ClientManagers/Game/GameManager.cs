@@ -161,7 +161,6 @@ namespace Assets.Scripts.ClientManagers.Game
 
 
 
-
             if (!KingdomManager.Instance.IsZoningMode)
                 KingdomManager.Instance.ToggleZoning(true);
         }
