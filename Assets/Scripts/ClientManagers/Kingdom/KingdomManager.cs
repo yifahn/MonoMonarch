@@ -1,4 +1,4 @@
-﻿ using System;
+﻿using System;
 using System.IO;
 using System.Threading.Tasks;
 using System.Collections.Generic;
@@ -31,6 +31,8 @@ using MonoMonarchGameFramework.Game.Kingdom.Nodes.MTower;
 using MonoMonarchGameFramework.Game.Kingdom.Nodes.Wonder;
 using System.Reflection;
 using static UnityEditor.Experimental.GraphView.Port;
+using UnityEditor.Experimental.GraphView;
+using Unity.VisualScripting;
 
 
 
@@ -152,7 +154,7 @@ namespace Assets.Scripts.ClientManagers.Kingdom
         [SerializeField] private int[] zonedNumNodeTypes = { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
         [SerializeField] private List<Color> nodeColours;
         [SerializeField] private bool isZoningMode;
-        
+
         public int[] ZonedNumNodeTypes { get => zonedNumNodeTypes; set => zonedNumNodeTypes = value; }
         public List<BaseNode> ZonedMapList { get => zonedMapList; set => zonedMapList = value; }
         public List<Color> NodeColours { get => nodeColours; set => nodeColours = value; }
@@ -176,20 +178,52 @@ namespace Assets.Scripts.ClientManagers.Kingdom
                 int[] nodeIdArray = new int[ZonedMapList.Count];
                 for (int i = 0; i < ZonedMapList.Count; i++)
                     nodeIdArray[i] = ZonedMapList[i].NodeIndex;
-             
+
                 //change material of scene nodes to zonedmap node's material
-                DistinguishZoningNodes(nodeIdArray); 
+                DistinguishZoningNodes(nodeIdArray);
+
                 //GET FLARE COLOUR //break game rules?
-
+                Color flareMat = GameRulesCheck() ? FlareMatGreen.GetComponent<Color>() : FlareMatRed.GetComponent<Color>();
                 //ADD FLARE //enable flares
-
+                foreach (int nodeId in nodeIdArray)
+                {
+                    FlareDict[nodeId].GetComponent<MeshRenderer>().material.color = flareMat;
+                }
             }
             else if (!enableZoningMode && IsZoningMode)
             {
                 IsZoningMode = false;
                 foreach (BaseNode node in ZonedMapList)
-                    NodeList[Map[node.NodeIndex].NodeType][node.NodeIndex].gameObject.GetComponent<MeshRenderer>().material.color = nodeColours.ElementAt(node.NodeType); //FLARE?
+                {
+                    NodeList[Map[node.NodeIndex].NodeType][node.NodeIndex].gameObject.GetComponent<MeshRenderer>().material.color = nodeColours.ElementAt(node.NodeType);
+
+                    Color redOpaque = new Color(FlareMatRed.color.r, FlareMatRed.color.g, FlareMatRed.color.b, 0);
+                    FlareDict[node.NodeIndex].GetComponent<MeshRenderer>().material.color = redOpaque;
+                }
             }
+        }
+        public void ToggleFlares(int flareIndexes)
+        {
+
+        }
+        public bool GameRulesCheck()
+        {
+            //node type total num rules
+            if (!KingdomState.ValidateBuildActionByNumOfBuildings(ZonedNumNodeTypes))
+                return false;
+
+            //road blockade rule
+            foreach (BaseNode node in ZonedMapList)
+            {
+                if (node.NodeType == 6)
+                    if (Map[node.NodeIndex].NodeType != 5)
+                        return false;
+            }
+
+            //sufficient coin rule
+            if (Treasury.TreasuryManager.Instance.ZoningCost > Treasury.TreasuryManager.Instance.TreasuryState.GetTotalCoin())
+                return false;
+            return true;
         }
         public BaseNode GetSelectedBaseNodeZoning(int nodeIndex)
         {
@@ -216,6 +250,7 @@ namespace Assets.Scripts.ClientManagers.Kingdom
 
             }
         }
+
         public BaseNode FindZonedMapNode(int index)
         {
             int left = 0, right = ZonedMapList.Count - 1;
@@ -257,16 +292,16 @@ namespace Assets.Scripts.ClientManagers.Kingdom
             SetZonedColourSelection(nodeIdArray, nodeTypeArray);
 
             //CHECK GAME RULES
-            foreach(int nodeId in nodeIdArray)
+            foreach (int nodeId in nodeIdArray)
             {
-                KingdomState.UpdateNumNodeTypes();
+                // KingdomState.UpdateNumNodeTypes();
             }
 
-            
 
-            for (int i = 0; i < ZonedMapList.Count();i++)
+
+            for (int i = 0; i < ZonedMapList.Count(); i++)
             {
-            //glow effect red or green
+                //glow effect red or green
             }
         }
 
@@ -359,7 +394,7 @@ namespace Assets.Scripts.ClientManagers.Kingdom
 
                 FlareDict.Add(i, Flare); //now use flares by changing material with preset colour,
                                          //flarematred or flarematgreen, after an intial check of if if game rules are not violated
-            }    
+            }
         }
 
 

@@ -71,44 +71,17 @@ namespace Assets.Scripts.ClientManagers.Game
         #region Game Event Listeners
         private UnityEvent<int[]> buildEvent;
         public UnityEvent<int[]> BuildEvent { get => buildEvent; set => buildEvent = value; }
+       // private UnityEvent serverUpdateEvent;
+       // public UnityEvent ServerUpdateEvent { get => serverUpdateEvent; set => serverUpdateEvent = value; }
         public void InitialiseUnityEvents()
         {
             BuildEvent = new UnityEvent<int[]>();
-
             BuildEvent.AddListener(SignalZonedMapAddEvent);
+           // ServerUpdateEvent = new UnityEvent();
+           // ServerUpdateEvent.AddListener(SignalUpdateBuildUI);
+           
         }
-        public static int CalculateNodeId(int x, int y)
-        {
-            return (y - 1) * 60 + (x - 1);
-        }
-
-        public void TEST()
-        {
-            BuildEvent.Invoke(new int[2] { 2, 2 });
-        }
-
-        public static (int[], int[]) CalculateNodePos(int[] iNodeArray)
-        {
-            int[] xNodeArray = new int[iNodeArray.Length];
-            int[] yNodeArray = new int[iNodeArray.Length];
-            foreach (int i in iNodeArray)
-            {
-                xNodeArray[i] = i % 60 + 1;
-                yNodeArray[i] = i / 60 + 1;
-            }
-            return (xNodeArray, yNodeArray);
-        }
-
-        public static int[] CalculateNodeId(int[] xArray, int[] yArray)
-        {
-            int[] iArray = new int[xArray.Length];
-            for (int i = 0; i < xArray.Length; i++)
-            {
-                iArray[i] = (yArray[i] - 1) * 60 + (xArray[i] - 1);
-            }
-            return iArray;
-        }
-
+     
         void SignalZonedMapAddEvent(int[] nodeIndexes)
         {
             List<BaseNode> zonedNodesListForBuy = new List<BaseNode>();
@@ -162,7 +135,13 @@ namespace Assets.Scripts.ClientManagers.Game
 
 
             if (!KingdomManager.Instance.IsZoningMode)
+            {
                 KingdomManager.Instance.ToggleZoning(true);
+            }
+            else
+            {
+
+            }
         }
 
 
@@ -213,6 +192,62 @@ namespace Assets.Scripts.ClientManagers.Game
         }
     }
 }
+
+
+//public static int CalculateNodeId(int x, int y)
+//{
+//    return (y - 1) * 60 + (x - 1);
+//}
+
+////public void TEST()
+////{
+////    BuildEvent.Invoke(new int[2] { 2, 2 });
+////}
+
+//public static (int[], int[]) CalculateNodePos(int[] iNodeArray)
+//{
+//    int[] xNodeArray = new int[iNodeArray.Length];
+//    int[] yNodeArray = new int[iNodeArray.Length];
+//    foreach (int i in iNodeArray)
+//    {
+//        xNodeArray[i] = i % 60 + 1;
+//        yNodeArray[i] = i / 60 + 1;
+//    }
+//    return (xNodeArray, yNodeArray);
+//}
+
+//public static int[] CalculateNodeId(int[] xArray, int[] yArray)
+//{
+//    int[] iArray = new int[xArray.Length];
+//    for (int i = 0; i < xArray.Length; i++)
+//    {
+//        iArray[i] = (yArray[i] - 1) * 60 + (xArray[i] - 1);
+//    }
+//    return iArray;
+//}
+/// <summary>
+/// 
+/// 
+/// 
+/// 
+/// 
+/// 
+/// </summary>
+/// <param name="nodeIndexes"></param>
+
+
+
+// void SignalUpdateBuildUI()
+// {
+//     UpdateBuildUI();
+// }
+// private void UpdateBuildUI()
+//  {
+//     
+//
+// }
+
+
 
 //switch (KingdomManager.Instance.Map[i].NodeType)
 //   {

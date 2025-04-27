@@ -35,7 +35,13 @@ namespace Assets.Scripts.ClientManagers.Treasury
             webRequest.SetRequestHeader("Content-Type", "application/json");
             webRequest.SetRequestHeader("Authorization", $"Bearer {UserManager.Instance.UserLoginResponse.AuthToken}");
             webRequest.downloadHandler = new DownloadHandlerBuffer();
-            await webRequest.SendWebRequest();
+           // await webRequest.SendWebRequest();
+
+            webRequest.SendWebRequest();
+            while (!webRequest.isDone)
+            { await Task.Yield(); }
+
+
             ITreasuryLoadResponse response = null;
             JsonSerializer serialiser = new JsonSerializer();
             if (webRequest.result == UnityWebRequest.Result.Success)
